@@ -2,12 +2,10 @@
 #include <string>
 
 
-using namespace std;
-
 //Prototypes
 void PrintIntro();
 void PlayGame();
-string GetGuess();
+std::string GetGuess();
 bool AskToPlayAgain();
 
 //The entry point of application
@@ -28,9 +26,9 @@ void PrintIntro()
 {
 	constexpr int WORD_LENGTH = 9;
 	std::cout << "Welcome to Bulls and Cows!\n";
-	cout << "Can you guess the " << WORD_LENGTH;
-	cout << " letter isogram I'm thinking of?\n";
-	cout << endl;
+	std::cout << "Can you guess the " << WORD_LENGTH;
+	std::cout << " letter isogram I'm thinking of?\n";
+	std::cout << std::endl;
 	return;
 }
 
@@ -40,26 +38,26 @@ void PlayGame()
 	constexpr int NUMBER_OF_TURNS = 5;
 	for (int count = 1; count <= NUMBER_OF_TURNS; count++)
 	{
-		string Guess = GetGuess();
-		cout << "Your guess was: " << Guess << endl;
-		cout << endl;
+		std::string Guess = GetGuess();
+		std::cout << "Your guess was: " << Guess << std::endl;
+		std::cout << std::endl;
 	}
 }
 
 //Gets guess from player and repeat guess back to them
-string GetGuess()
+std::string GetGuess()
 {
-	cout << "Enter your guess: ";
-	string Guess = "";
-	getline(cin, Guess);
+	std::cout << "Enter your guess: ";
+	std::string Guess = "";
+	std::getline(std::cin, Guess);
 	return Guess;
 }
 
 bool AskToPlayAgain()
 {
-	cout << "Do you want to play again? (y/n)";
-	string Response = "";
-	getline(cin, Response);
+	std::cout << "Do you want to play again? (y/n)";
+	std::string Response = "";
+	std::getline(std::cin, Response);
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
 
@@ -123,37 +121,47 @@ bool AskToPlayAgain()
 
 
 //---------------------------------------------FOR LOOP--------------------------------------------------------
-
 // FOR LOOPS ---> Kada znamo koliko puta hocemo da se ponovi
-
 // for (initialization; condition; increse)
 //      promenljjiva; uslov; koliko puta se ponavlja;
 
 // for (int count = 1; count <= limmit; count++) {
 	// <the code you want to repeat>
 // }
-
-
 //---------------------------------------------FOR LOOP--------------------------------------------------------
 
 //---------------------------------------------DO & WHILE LOOP-------------------------------------------------
 
 // WHOLE LOOPS ---> Kada ne znamo koliko puta ce se ponovi nesto
-
 // do {
 //	<the code you want to repeat>
 // }
 // while (condition);
-
 //---------------------------------------------DO & WHILE LOOP-------------------------------------------------
 
 //---------------------------------------------BOOLEAN---------------------------------------------------------
-
 // Pise se bool ---> Moze biti True ili False
-
-// Primer ---> return (Response[0] == 'y') || (Response[0] == 'Y'); 0 ili 1 (true ili false) kazemo da su isto sto i karakter kada se ukuca
-
-
+// Primer ---> return (Response[0] == 'y') || (Response[0] == 'Y'); 0 ili 1 (true ili false) kazemo da su isto 
+//sto i karakter kada se ukuca
 //---------------------------------------------BOOLEAN---------------------------------------------------------
+
+
+//---------------------------------------------CLASSES---------------------------------------------------------
+// u Solution Exploreru --> Desni klik na skroz gore gde su dva plusica --> Add --> New Item --> Header file
+// Header file za Unreal Engine nazivamo kako hocemo ali mora pocinjati sa slovom F da se oznaci da je klasa u 
+//pitanju.
+//npr. nece biti BullAndCowGame nego FBullAndCowGame!
+//Header file je u sustini blueprint gde ce se definisati klase (kolko hocemo klasa) i metode koje cemo posle 
+//da pozivamo u Main.cpp
+//Klasa ima PUBLIC i PRIVATE funkcije
+//PRIVATE promenjlive su ispomoc PUBLICS funkcijama
+// using namespace NIKADA ne koristiti u HEADER File-ovima!  npr. ---> (using namespace std;)
+//ovde u Main.cpp se koristi samo za lakse pisanje ali ne bi trebalo UOPSTE da se koristi
+// u HEADER file-u kliknemo desnim klikom na neku metodu ---> Quick Actions and Refactoring ---> Create
+// Definition of "" in FBullCowGame.cpp i to ce nam napreviti jos jedan file u Solution Explorer-u
+//kod Main.cpp i zvace se FBullCowGame.cpp
+//---------------------------------------------CLASSES---------------------------------------------------------
+
+
 
 
