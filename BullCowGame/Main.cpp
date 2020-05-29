@@ -7,16 +7,31 @@ using namespace std;
 //Prototypes
 void PrintIntro();
 void PlayGame();
-bool AskToPlayAgain();
 string GetGuess();
+bool AskToPlayAgain();
 
 //The entry point of application
 int main() 
 {
-	PrintIntro();
-	PlayGame();
-	AskToPlayAgain();
+	bool bPlayAgain = false;
+	do {
+		PrintIntro();
+		PlayGame();
+		bPlayAgain = AskToPlayAgain();
+	} 
+	while (bPlayAgain);
 	return 0;
+}
+
+//Introduce the game
+void PrintIntro()
+{
+	constexpr int WORD_LENGTH = 9;
+	std::cout << "Welcome to Bulls and Cows!\n";
+	cout << "Can you guess the " << WORD_LENGTH;
+	cout << " letter isogram I'm thinking of?\n";
+	cout << endl;
+	return;
 }
 
 void PlayGame()
@@ -31,37 +46,26 @@ void PlayGame()
 	}
 }
 
-bool AskToPlayAgain()
-{
-	cout << "DO you want to play again?";
-	string Response = "";
-	getline(cin, Response);
-	cout << "First char" << (Response[0] == 'y');
-	cout << endl;
-	return false;
-}
-
-//Introduce the game
-void PrintIntro() 
-{
-	constexpr int WORD_LENGTH = 5;
-	std::cout << "Welcome to Bulls and Cows!\n";
-	std::cout << "Hello There!" << std::endl;
-	cout << "Can you guess the " << WORD_LENGTH;
-	cout << " letter isogram I'm thinking of?\n";
-	cout << endl;
-	return;
-}
-
 //Gets guess from player and repeat guess back to them
-string GetGuess() 
+string GetGuess()
 {
 	cout << "Enter your guess: ";
 	string Guess = "";
-	cin >> Guess; 
 	getline(cin, Guess);
 	return Guess;
 }
+
+bool AskToPlayAgain()
+{
+	cout << "Do you want to play again? (y/n)";
+	string Response = "";
+	getline(cin, Response);
+	return (Response[0] == 'y') || (Response[0] == 'Y');
+}
+
+
+
+
 
 
 
@@ -118,7 +122,7 @@ string GetGuess()
 //}
 
 
-//---------------------------------------------LOOPS-----------------------------------------------------------
+//---------------------------------------------FOR LOOP--------------------------------------------------------
 
 // FOR LOOPS ---> Kada znamo koliko puta hocemo da se ponovi
 
@@ -130,15 +134,26 @@ string GetGuess()
 // }
 
 
+//---------------------------------------------FOR LOOP--------------------------------------------------------
+
+//---------------------------------------------DO & WHILE LOOP-------------------------------------------------
 
 // WHOLE LOOPS ---> Kada ne znamo koliko puta ce se ponovi nesto
 
-//---------------------------------------------LOOPS-----------------------------------------------------------
+// do {
+//	<the code you want to repeat>
+// }
+// while (condition);
+
+//---------------------------------------------DO & WHILE LOOP-------------------------------------------------
 
 //---------------------------------------------BOOLEAN---------------------------------------------------------
 
 // Pise se bool ---> Moze biti True ili False
 
+// Primer ---> return (Response[0] == 'y') || (Response[0] == 'Y'); 0 ili 1 (true ili false) kazemo da su isto sto i karakter kada se ukuca
+
 
 //---------------------------------------------BOOLEAN---------------------------------------------------------
+
 
