@@ -2,23 +2,25 @@
 This acts as the view of the MVC pattern , and is responsible for
 all user interaction. For game logic see the FBullCowGame class.
 */
+#pragma once
 
 #include <iostream> 
 #include <string>
 #include "FBullCowGame.h"
 
+// to make syntax Unreal friendly
 using FText = std::string; 
 using int32 = int;
 
 
-//Prototypes
+//Function prototypes
 void PrintIntro();
 void PlayGame();
 FText GetValidGuess();
 bool AskToPlayAgain();
 void PrintGameSUmmary();
 
-FBullCowGame BCGame;
+FBullCowGame BCGame; // instantitate a new game, which we re-use all the time
 
 //The entry point of application
 int main() 
