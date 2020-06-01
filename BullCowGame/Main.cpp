@@ -37,6 +37,7 @@ void PrintIntro()
 
 void PlayGame()
 {
+	BCGame.Reset();
 	int MaxTries = BCGame.GetMaxTries();
 
 
@@ -169,6 +170,18 @@ bool AskToPlayAgain()
 // Definition of "" in FBullCowGame.cpp i to ce nam napreviti jos jedan file u Solution Explorer-u
 //kod Main.cpp i zvace se FBullCowGame.cpp
 //---------------------------------------------CLASSES---------------------------------------------------------
+
+//---------------------------------------------CONST-----------------------------------------------------------
+//Const sluzi da se stavi u klasi kod metode koja je public i u konstruktoru
+//Const znaci da ne mozemo da menjamo nista vise (Kao Final u Javi)
+//Const ima drugacije znacenje kada se stavi ispred ili posle metode,ovo kada se ne menja nista stavlja se posle
+//metode.
+//---------------------------------------------CONST-----------------------------------------------------------
+
+//---------------------------------------------CONSTRUCTOR-----------------------------------------------------
+//U njega cemo d apostavimo PRIVATE vrednosti koje smo pisali u klasi i onda cmeo da im dmao vrednost neku.
+//
+//---------------------------------------------CONSTRUCTOR-----------------------------------------------------
 
 
 
