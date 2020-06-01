@@ -1,19 +1,27 @@
+/* This is the console executable taht make use of the BullCow class
+This acts as the view of the MVC pattern , and is responsible for
+all user interaction. For game logic see the FBullCowGame class.
+*/
+
 #include <iostream> 
 #include <string>
 #include "FBullCowGame.h"
+
+using FText = std::string; 
+using int32 = int;
 
 
 //Prototypes
 void PrintIntro();
 void PlayGame();
-std::string GetGuess();
+FText GetGuess();
 bool AskToPlayAgain();
 
 FBullCowGame BCGame;
 
 //The entry point of application
 int main() 
-{
+{ 
 	bool bPlayAgain = false;
 	do {
 		PrintIntro();
@@ -27,7 +35,7 @@ int main()
 //Introduce the game
 void PrintIntro()
 {
-	constexpr int WORD_LENGTH = 9;
+	constexpr int32 WORD_LENGTH = 9;
 	std::cout << "Welcome to Bulls and Cows!\n";
 	std::cout << "Can you guess the " << WORD_LENGTH;
 	std::cout << " letter isogram I'm thinking of?\n";
@@ -38,26 +46,33 @@ void PrintIntro()
 void PlayGame()
 {
 	BCGame.Reset();
-	int MaxTries = BCGame.GetMaxTries();
+	int32 MaxTries = BCGame.GetMaxTries();
 
 
 	//loop for the number of turns asking for guesses
-	for (int count = 1; count <= MaxTries; count++)
+	// TODO change from FOR to WHILE loop onde we are validating tries
+	for (int32 count = 1; count <= MaxTries; count++)
 	{
-		std::string Guess = GetGuess();
+		FText Guess = GetGuess(); // TODO make loop checking valid guess
+
+		// Submit valid guess to the game
+		// Print number of bulls and cows
+
+
 		std::cout << "Your guess was: " << Guess << std::endl;
 		std::cout << std::endl;
 	}
+	// TODO summarise game
 }
 
 //Gets guess from player and repeat guess back to them
-std::string GetGuess()
+FText GetGuess()
 {
-	int CurrentTry = BCGame.GetCurrentTry();
+	int32 CurrentTry = BCGame.GetCurrentTry();
 
 	//get a guess from the player
-	std::cout << "Try: " << CurrentTry << "Enter your guess: ";
-	std::string Guess = "";
+	std::cout << "Try " << CurrentTry << ". Enter your guess: ";
+	FText Guess = "";
 	std::getline(std::cin, Guess);
 	return Guess;
 }
@@ -65,7 +80,7 @@ std::string GetGuess()
 bool AskToPlayAgain()
 {
 	std::cout << "Do you want to play again? (y/n)";
-	std::string Response = "";
+	FText Response = "";
 	std::getline(std::cin, Response);
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
@@ -179,10 +194,47 @@ bool AskToPlayAgain()
 //---------------------------------------------CONST-----------------------------------------------------------
 
 //---------------------------------------------CONSTRUCTOR-----------------------------------------------------
-//U njega cemo d apostavimo PRIVATE vrednosti koje smo pisali u klasi i onda cmeo da im dmao vrednost neku.
-//
+//U njega cemo da postavimo PRIVATE vrednosti koje smo pisali u klasi i onda cmeo da im dmao vrednost neku.
 //---------------------------------------------CONSTRUCTOR-----------------------------------------------------
 
+//---------------------------------------------TODO / TASK LIST - PSEUDOCODING---------------------------------
+// Mozemo negde kao komentar napisati npr. //TODO need to add something.
+// Kada odemo u View --> Task List izbacice nam dole Task Listu u koju su navedeni TODO i na njih mozemo 
+//kliknuti da nas odvede do te linije koda u kojou smo stavili TODO i uradimo sta ssmo sebi stavili kao 
+//podsetnik
+//Pseudo programiranje moze najlakse biti u smislu komentara.Napisacemo sta nam treba i kako bi odradili
+// u TODO i komentarima se ne pise programerski,nego recima izraziti sta zeliomo da uradimo ili objasnimo
+// npr --->
+//void PlayGame()
+//{
+//	BCGame.Reset();
+//	int MaxTries = BCGame.GetMaxTries();
+//
+//
+//	//loop for the number of turns asking for guesses
+//	for (int count = 1; count <= MaxTries; count++)
+//	{
+//		FText Guess = GetGuess(); // TODO make loop checking valid guess
+//
+//		// Submit valid guess to the game
+//		// Print number of bulls and cows
+//
+//
+//		std::cout << "Your guess was: " << Guess << std::endl;
+//		std::cout << std::endl;
+//	}
+//	// TODO summarise game
+//}
+//---------------------------------------------TODO / TASK LIST - PSEUDOCODING--------------------------------
+
+//---------------------------------------------TYPE ALIASES FOR UNREAL ENGINE---------------------------------
+// FString (ili string) ---> Je nesto sto je promenjlivo
+// FText (isto string) ---> Je za user output / interaction
+// int32 (ili int,integer) bio oznacavao kao da li je za x32bit OS ili za x64bit OS
+// mozemo napisati gore ovako npr kod #include<>
+// using FText = std::string;
+// to ce nam gde kod da ima std::string zamenuti sa FText-om
+//---------------------------------------------TYPE ALIASES FOR UNREAL ENGINE---------------------------------
 
 
 
