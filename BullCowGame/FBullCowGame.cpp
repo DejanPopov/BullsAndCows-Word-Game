@@ -83,13 +83,25 @@ bool FBullCowGame::IsIsogram(FString Word) const
 	return true;
 }
 
+bool FBullCowGame::IsLowercase(FString Word) const
+{
+	for (auto Letter : Word)
+	{
+		if (!islower(Letter)) 
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 {
 	if (!IsIsogram(Guess)) // if th eguess isnt an isogram 
 	{
 		return EGuessStatus::Not_Isogram;
 	}
-	else if (false) // if the guess isnt all lowercase return the error 
+	else if (!IsLowercase(Guess)) // if the guess isnt all lowercase return the error 
 	{
 		return EGuessStatus::Not_Lower_case;
 	}
