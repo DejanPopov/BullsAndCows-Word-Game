@@ -35,9 +35,8 @@ int main()
 //Introduce the game
 void PrintIntro()
 {
-	constexpr int32 WORD_LENGTH = 9;
 	std::cout << "Welcome to Bulls and Cows!\n";
-	std::cout << "Can you guess the " << WORD_LENGTH;
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
 	return;
@@ -55,11 +54,13 @@ void PlayGame()
 	{
 		FText Guess = GetGuess(); // TODO make loop checking valid guess
 
-		// Submit valid guess to the game
+		// Submit valid guess to the game, and recieve the counts
+		FBullCowCount BullCowCount =  BCGame.SubmitGuess(Guess);
+
 		// Print number of bulls and cows
+		std::cout << "Bulls = " << BullCowCount.Bulls << std::endl;
+		std::cout << "Cows = " << BullCowCount.Cows << std::endl;
 
-
-		std::cout << "Your guess was: " << Guess << std::endl;
 		std::cout << std::endl;
 	}
 	// TODO summarise game
@@ -235,6 +236,25 @@ bool AskToPlayAgain()
 // using FText = std::string;
 // to ce nam gde kod da ima std::string zamenuti sa FText-om
 //---------------------------------------------TYPE ALIASES FOR UNREAL ENGINE---------------------------------
+
+//---------------------------------------------STRUCT---------------------------------------------------------
+// Struct je isto sto i klasa ali su svi njeni elementi PUBLIC
+//---------------------------------------------STRUCT---------------------------------------------------------
+
+//---------------------------------------------IF / ELSE------------------------------------------------------
+// if (condition1) {
+//	statements;
+//}else if (condition2) {
+//	statements;
+//}else {
+//	statements;
+//}
+//
+//---------------------------------------------IF / ELSE------------------------------------------------------
+
+//---------------------------------------------DEBUGGING 101--------------------------------------------------
+//
+//---------------------------------------------DEBUGGING 101--------------------------------------------------
 
 
 
